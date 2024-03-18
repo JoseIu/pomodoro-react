@@ -3,6 +3,8 @@ import style from './Clock.module.scss';
 const Clock = () => {
   const { grades, minutes, seconds, play, handlePlay } = useTimer();
 
+  document.title = `${minutes}: ${seconds}`;
+
   return (
     <div className={style.clock}>
       <div>
