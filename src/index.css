@@ -3,8 +3,7 @@
 :root {
   --tipo-principal: Helvetica, Arial, sans-serif;
   --font-weight: 400;
-  --color: rgba(255, 255, 255, 0.87);
-  --background-color: #242424;
+
   --negro: #393939;
   --zinc-100: #f4f4f5;
   --zinc-400: #a1a1aa;
@@ -133,8 +132,8 @@ body {
   min-height: 100vh;
   font-size: 100%;
   font-family: var(--tipo-principal);
-  color: var(--color);
-  background-color: var(--background-color);
+  color: var(--zinc-100);
+  background-color: var(--zinc-900);
   /* opcional */
   line-height: 1.4em;
   /* opcional */
