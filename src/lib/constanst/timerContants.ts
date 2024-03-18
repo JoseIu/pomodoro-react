@@ -1,0 +1,5 @@
+export const TIMER_CONSTANT = {
+  SECOND: 1000,
+  MINUTE: 1000 * 60, //60.000 ms
+  TOTAL_GRADES: 360,
+};
