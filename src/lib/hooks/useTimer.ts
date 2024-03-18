@@ -5,50 +5,67 @@ import { TimerInterface } from '../interfaces/timer.interface';
 
 export const useTimer = () => {
   const [timer, setTimer] = useState<TimerInterface>({
-    initialTimer: 2,
-    pausedTime: 0,
+    workTime: 1,
+    bWorkTime: 1,
+
+    breakTime: 2,
+    bBreakTime: 2,
+
     minutes: '00',
     seconds: '00',
     grades: 0,
+
+    work: true,
+    break: false,
   });
+  const { workTime: workTime, work, breakTime } = timer;
   const setInitialTimer = (newInitialTimer: number) =>
-    setTimer({ ...timer, initialTimer: newInitialTimer });
+    setTimer({ ...timer, workTime: newInitialTimer });
 
   const timerRef = useRef<number | null>(null);
+  const numref = useRef<number>(breakTime);
 
   const [play, setPlay] = useState(false);
-
-  const { initialTimer, pausedTime } = timer;
 
   const handlePlay = () => {
     setPlay(!play);
   };
 
   useEffect(() => {
-    let interval: number;
-    if (play) {
-      // totalTime in ms
-      let totalTime = timerRef.current ? timerRef.current : initialTimer * 60 * 1000;
-      // totalTime in seg
-      const totalTimeSeconds = initialTimer * 60;
+    // let interval: number;
+    if (!play) return;
+    // totalTime in ms
+    let totalTime = timerRef.current ? timerRef.current : workTime * 60 * 1000;
+    const totalTimeSeconds = workTime * 60;
+    // totalTime in seg
 
-      interval = setInterval(() => {
-        totalTime -= TIMER_CONSTANT.SECOND;
+    const interval = setInterval(() => {
+      totalTime -= TIMER_CONSTANT.SECOND;
 
-        const { grades, minutes, seconds } = resolveTimeParts(totalTime, totalTimeSeconds);
+      if (totalTime === 0) {
+        clearInterval(interval);
+        if (work) {
+          setTimer((prev) => ({ ...prev, work: !work, workTime: prev.breakTime }));
+        } else {
+          setTimer((prev) => ({ ...prev, work: !work, workTime: prev.bWorkTime }));
+        }
+        // setTimer((prev) => ({ ...prev, work: true, workTime: prev.bWorkTime }));
+      }
 
-        setTimer((prevSets) => ({
-          ...prevSets,
-          minutes,
-          seconds,
-          grades,
-        }));
+      const { grades, minutes, seconds } = resolveTimeParts(totalTime, totalTimeSeconds);
 
-        timerRef.current = totalTime;
-      }, TIMER_CONSTANT.SECOND);
-    }
+      setTimer((prevSets) => ({
+        ...prevSets,
+        minutes,
+        seconds,
+        grades,
+      }));
+
+      timerRef.current = totalTime;
+    }, 50);
+
     return () => clearInterval(interval);
-  }, [initialTimer, play, pausedTime]);
+  }, [workTime, play, work]);
 
   return { ...timer, play, handlePlay, setInitialTimer };
 };
