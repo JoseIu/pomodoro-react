@@ -1,7 +1,14 @@
 export interface TimerInterface {
-  initialTimer: number;
-  pausedTime: number;
+  workTime: number;
+  bWorkTime: number;
+
+  breakTime: number;
+  bBreakTime: number;
+
   minutes: string;
   seconds: string;
   grades: number;
+
+  work: boolean;
+  break: boolean;
 }
