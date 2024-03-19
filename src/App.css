@@ -1,0 +1,14 @@
+.wrapper {
+  max-width: 1400px;
+  margin-inline: auto;
+}
+
+.containert {
+  height: 100dvh;
+  padding: 0.5em;
+  /* background-color: blue; */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  gap: 2em;
+}

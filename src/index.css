@@ -84,14 +84,6 @@ em {
   color: inherit;
 }
 
-/* Evitamos problemas con los pseudoelementos de quotes */
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: '';
-  content: none;
-}
 /* Nivelamos problemas de tipografías y colocación de formularios */
 form,
 input,
@@ -134,16 +126,8 @@ body {
   font-family: var(--tipo-principal);
   color: var(--zinc-100);
   background-color: var(--zinc-900);
-  /* opcional */
-  line-height: 1.4em;
-  /* opcional */
+
   -webkit-hyphens: auto;
   -ms-hyphens: auto;
   hyphens: auto;
-  /* opcional */
-  font-smooth: always;
-  /* opcional */
-  -webkit-font-smoothing: antialiased;
-  /* opcional */
-  -moz-osx-font-smoothing: grayscale;
 }

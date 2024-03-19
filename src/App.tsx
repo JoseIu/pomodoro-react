@@ -1,12 +1,16 @@
 import './App.css';
-import Clock from './components/clock/Clock';
+import Timer from './components/Timer/Timer';
+import Tasks from './components/tasks-component/Tasks';
 
 const App = () => {
   return (
-    <>
-      <Clock />
-      <h1>Pomodoro</h1>
-    </>
+    <main className="wrapper">
+      <div className="containert">
+        <Timer />
+
+        <Tasks />
+      </div>
+    </main>
   );
 };
 
