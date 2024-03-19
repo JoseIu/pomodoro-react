@@ -1,0 +1,21 @@
+.work {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+}
+.icon {
+  width: 1em;
+}
+.work__mode {
+  padding: 0.2em;
+  // background-color: rebeccapurple;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.work__title {
+  font-weight: 600;
+  color: var(--zinc-400);
+}
