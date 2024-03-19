@@ -3,7 +3,6 @@ export interface TimerInterface {
   bWorkTime: number;
 
   breakTime: number;
-  bBreakTime: number;
 
   minutes: string;
   seconds: string;

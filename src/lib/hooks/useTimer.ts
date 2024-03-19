@@ -9,7 +9,6 @@ export const useTimer = () => {
     bWorkTime: 1,
 
     breakTime: 2,
-    bBreakTime: 2,
 
     minutes: '00',
     seconds: '00',
@@ -18,12 +17,11 @@ export const useTimer = () => {
     work: true,
     break: false,
   });
-  const { workTime: workTime, work, breakTime } = timer;
+  const { workTime: workTime, work } = timer;
   const setInitialTimer = (newInitialTimer: number) =>
     setTimer({ ...timer, workTime: newInitialTimer });
 
   const timerRef = useRef<number | null>(null);
-  const numref = useRef<number>(breakTime);
 
   const [play, setPlay] = useState(false);
 
@@ -49,7 +47,6 @@ export const useTimer = () => {
         } else {
           setTimer((prev) => ({ ...prev, work: !work, workTime: prev.bWorkTime }));
         }
-        // setTimer((prev) => ({ ...prev, work: true, workTime: prev.bWorkTime }));
       }
 
       const { grades, minutes, seconds } = resolveTimeParts(totalTime, totalTimeSeconds);
