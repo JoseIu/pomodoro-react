@@ -1,0 +1,19 @@
+.work__focus {
+  padding: 0.2em 0.5em;
+
+  border-radius: 0.3em;
+  font-size: 0.875rem;
+
+  color: var(--zinc-400);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+
+  background-color: #84cc161a;
+  outline: 0.0625rem solid #84cc16;
+}
+.icon {
+  width: 1em;
+}
